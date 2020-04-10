@@ -46,20 +46,24 @@ macro(build_spdlog)
     list(APPEND extra_cmake_args "-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}")
   endif()
   list(APPEND extra_cmake_args "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}")
-  list(APPEND extra_cmake_args "-DSPDLOG_BUILD_BENCH=OFF")
   list(APPEND extra_cmake_args "-DSPDLOG_BUILD_TESTS=OFF")
-  list(APPEND extra_cmake_args "-DSPDLOG_BUILD_EXAMPLES=OFF")
+  list(APPEND extra_cmake_args "-DSPDLOG_BUILD_EXAMPLE=OFF")
+  if(NOT WIN32)
+    # TODO(karsten1987): re-address this once upstream ticket is resolved:
+    # https://github.com/fmtlib/fmt/issues/1604
+    list(APPEND extra_cmake_args "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS} -Wno-sign-conversion")
+    list(APPEND extra_cmake_args "-DSPDLOG_BUILD_SHARED=ON")
+  endif()
 
   include(ExternalProject)
-  # Get spdlog 1.3.1
-  ExternalProject_Add(spdlog-1.3.1
-    URL https://github.com/gabime/spdlog/archive/v1.3.1.tar.gz
-    URL_MD5 3c17dd6983de2a66eca8b5a0b213d29f
+  # Get spdlog 1.5.0
+  externalproject_add(spdlog-1.5.0
+    URL https://github.com/gabime/spdlog/archive/v1.5.0.tar.gz
+    URL_MD5 a966eea01f81551527853d282896cb4d
     TIMEOUT 600
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
       ${extra_cmake_args}
-      -Wno-dev
   )
 
   # The external project will install to the build folder, but we'll install that on make install.
@@ -71,8 +75,13 @@ macro(build_spdlog)
   )
 endmacro()
 
-if(NOT spdlog_FOUND OR "${spdlog_VERSION}" VERSION_LESS 1.3.1)
+if(NOT spdlog_FOUND OR "${spdlog_VERSION}" VERSION_LESS 1.5.0)
   build_spdlog()
+endif()
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
 endif()
 
 # this ensures that the package has an environment hook setting the PATH
