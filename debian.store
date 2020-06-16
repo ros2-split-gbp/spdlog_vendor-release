@@ -1,1 +1,1 @@
-{"base": "8ff5288", "parent": "debian/foxy/spdlog_vendor", "previous": "e474077", "trim": "", "trimbase": ""}
+{"base": "f7a430b", "parent": "debian/rolling/spdlog_vendor", "previous": "686c619", "trim": "", "trimbase": ""}
