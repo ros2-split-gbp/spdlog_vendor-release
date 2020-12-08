@@ -1,3 +1,26 @@
+## spdlog_vendor (rolling) - 1.2.0-1
+
+The packages in the `spdlog_vendor` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --track rolling --rosdistro rolling spdlog_vendor` on `Tue, 08 Dec 2020 15:08:48 -0000`
+
+The `spdlog_vendor` package was released.
+
+Version of package(s) in repository `spdlog_vendor`:
+
+- upstream repository: https://github.com/ros2/spdlog_vendor.git
+- release repository: https://github.com/ros2-gbp/spdlog_vendor-release.git
+- rosdistro version: `1.1.2-2`
+- old version: `1.1.2-2`
+- new version: `1.2.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.0`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.20.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## spdlog_vendor (foxy) - 1.1.2-1
 
 The packages in the `spdlog_vendor` repository were released into the `foxy` distro by running `/usr/bin/bloom-release --rosdistro foxy --track foxy spdlog_vendor` on `Tue, 26 May 2020 19:24:29 -0000`
