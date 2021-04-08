@@ -49,19 +49,25 @@ macro(build_spdlog)
   list(APPEND extra_cmake_args "-DSPDLOG_BUILD_TESTS=OFF")
   list(APPEND extra_cmake_args "-DSPDLOG_BUILD_EXAMPLE=OFF")
   if(NOT WIN32)
+    # TODO(karsten1987): re-address this once upstream ticket is resolved:
+    # https://github.com/fmtlib/fmt/issues/1604
+    list(APPEND extra_cmake_args "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS} -Wno-sign-conversion")
     list(APPEND extra_cmake_args "-DSPDLOG_BUILD_SHARED=ON")
   endif()
 
   include(ExternalProject)
+  find_package(Patch REQUIRED)
 
-  # Get spdlog 1.8.2
-  externalproject_add(spdlog-1.8.2
-    URL https://github.com/gabime/spdlog/archive/v1.8.2.tar.gz
-    URL_MD5 22518fb28d4be66c92a703c67d99b1d1
+  # Get spdlog 1.5.0
+  externalproject_add(spdlog-1.5.0
+    URL https://github.com/gabime/spdlog/archive/v1.5.0.tar.gz
+    URL_MD5 a966eea01f81551527853d282896cb4d
     TIMEOUT 600
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
       ${extra_cmake_args}
+    PATCH_COMMAND
+    ${Patch_EXECUTABLE} -p1 -N < ${CMAKE_CURRENT_SOURCE_DIR}/gnuinstalldirs-after-project.patch
   )
 
   # The external project will install to the build folder, but we'll install that on make install.
@@ -70,7 +76,6 @@ macro(build_spdlog)
       ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install/
     DESTINATION
       ${CMAKE_INSTALL_PREFIX}
-    USE_SOURCE_PERMISSIONS
   )
 endmacro()
 
@@ -78,6 +83,7 @@ if(NOT spdlog_FOUND OR "${spdlog_VERSION}" VERSION_LESS 1.5.0)
   build_spdlog()
 endif()
 
+# TODO(blast545): This section and package.xml should be updated once copyright auto is solved. See: https://github.com/ament/ament_lint/issues/237
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()

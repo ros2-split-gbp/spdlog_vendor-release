@@ -2,30 +2,13 @@
 Changelog for package spdlog_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.3.0 (2021-04-06)
+1.1.3 (2021-04-08)
 ------------------
-* updating quality declaration links (re: `ros2/docs.ros2.org#52 <https://github.com/ros2/docs.ros2.org/issues/52>`_) (`#24 <https://github.com/ros2/spdlog_vendor/issues/24>`_)
-* Update to spdlog 1.8.2 (`#23 <https://github.com/ros2/spdlog_vendor/issues/23>`_)
-* Contributors: Chris Lalancette, shonigmann
-
-1.2.2 (2021-03-18)
-------------------
-* Remove a stale TODO (`#22 <https://github.com/ros2/spdlog_vendor/issues/22>`_)
-* Always preserve source permissions in vendor packages (`#20 <https://github.com/ros2/spdlog_vendor/issues/20>`_)
-* Contributors: Scott K Logan
-
-1.2.1 (2021-01-25)
-------------------
-* Remove unnecessary call to find_package(PATCH) (`#18 <https://github.com/ros2/spdlog_vendor/issues/18>`_)
-* Contributors: Chris Lalancette
-
-1.2.0 (2020-12-08)
-------------------
+* Update quality declaration links (re: `ros2/docs.ros2.org#52 <https://github.com/ros2/docs.ros2.org/issues/52>`_) (`#25 <https://github.com/ros2/spdlog_vendor/issues/25>`_)
+* Updated QD links to foxy
 * Updated QD to 1 (`#16 <https://github.com/ros2/spdlog_vendor/issues/16>`_)
-* bump spdlog version to 1.6.1 (`#15 <https://github.com/ros2/spdlog_vendor/issues/15>`_)
-* Bump QD to level 3 and updated QD (`#14 <https://github.com/ros2/spdlog_vendor/issues/14>`_)
 * Add Security Vulnerability Policy pointing to REP-2006. (`#13 <https://github.com/ros2/spdlog_vendor/issues/13>`_)
-* Contributors: Alejandro Hernández Cordero, Chris Lalancette, Dirk Thomas
+* Contributors: Alejandro Hernández Cordero, Chris Lalancette, Simon Honigmann
 
 1.1.2 (2020-05-26)
 ------------------
