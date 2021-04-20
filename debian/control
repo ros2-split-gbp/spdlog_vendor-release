@@ -1,0 +1,13 @@
+Source: ros-galactic-spdlog-vendor
+Section: misc
+Priority: optional
+Maintainer: Chris Lalancette <clalancette@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), libspdlog-dev, ros-galactic-ament-cmake, ros-galactic-ament-lint-auto, ros-galactic-ament-lint-common, ros-galactic-ros-workspace
+Homepage: https://github.com/gabime/spdlog
+Standards-Version: 3.9.2
+
+Package: ros-galactic-spdlog-vendor
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libspdlog-dev, ros-galactic-ros-workspace
+Description: Wrapper around spdlog, providing nothing but a dependency on spdlog, on some systems.
+ On others, it provides an ExternalProject build of spdlog.
