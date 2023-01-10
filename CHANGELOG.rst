@@ -2,22 +2,10 @@
 Changelog for package spdlog_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.4.2 (2022-11-02)
+1.3.1 (2023-01-10)
 ------------------
-* Update to spdlog 1.9.1 (`#27 <https://github.com/ros2/spdlog_vendor/issues/27>`_)
-* Contributors: Chris Lalancette
-
-1.4.1 (2022-09-13)
-------------------
-* Fixes policy CMP0135 warning for CMake >= 3.24 (`#30 <https://github.com/ros2/spdlog_vendor/issues/30>`_)
-* build shared lib only if BUILD_SHARED_LIBS is set (`#29 <https://github.com/ros2/spdlog_vendor/issues/29>`_)
-* Mirror rolling to master
-* xml tag order
-* updating maintainer
-* Contributors: Audrow Nash, Cristóbal Arroyo, Dharini Dutia, hannes09
-
-1.4.0 (2022-05-04)
-------------------
+* Fixes policy CMP0135 warning for CMake >= 3.24 (`#30 <https://github.com/ros2/spdlog_vendor/issues/30>`_) (`#32 <https://github.com/ros2/spdlog_vendor/issues/32>`_)
+* Contributors: mergify[bot]
 
 1.3.0 (2021-04-06)
 ------------------

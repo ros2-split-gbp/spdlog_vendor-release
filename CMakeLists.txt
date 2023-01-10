@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.5)
 project(spdlog_vendor)
 
 find_package(ament_cmake REQUIRED)
-ament_add_default_options()
 
 # Avoid DOWNLOAD_EXTRACT_TIMESTAMP warning for CMake >= 3.24
 if(POLICY CMP0135)
@@ -54,15 +53,16 @@ macro(build_spdlog)
   list(APPEND extra_cmake_args "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}")
   list(APPEND extra_cmake_args "-DSPDLOG_BUILD_TESTS=OFF")
   list(APPEND extra_cmake_args "-DSPDLOG_BUILD_EXAMPLE=OFF")
-  if(NOT WIN32 AND BUILD_SHARED_LIBS)
+  if(NOT WIN32)
     list(APPEND extra_cmake_args "-DSPDLOG_BUILD_SHARED=ON")
   endif()
 
   include(ExternalProject)
 
-  externalproject_add(spdlog-1.9.1
-    URL https://github.com/gabime/spdlog/archive/v1.9.1.tar.gz
-    URL_MD5 97d556dd35dbc362e05a2e74a33f6d93
+  # Get spdlog 1.8.2
+  externalproject_add(spdlog-1.8.2
+    URL https://github.com/gabime/spdlog/archive/v1.8.2.tar.gz
+    URL_MD5 22518fb28d4be66c92a703c67d99b1d1
     TIMEOUT 600
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
@@ -85,9 +85,6 @@ endif()
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
-  list(APPEND AMENT_LINT_AUTO_EXCLUDE
-    ament_cmake_cppcheck
-  )
   ament_lint_auto_find_test_dependencies()
 endif()
 
