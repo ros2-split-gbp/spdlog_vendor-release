@@ -1,0 +1,13 @@
+Source: ros-iron-spdlog-vendor
+Section: misc
+Priority: optional
+Maintainer: Dharini Dutia <dharini@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), libspdlog-dev, ros-iron-ament-cmake, ros-iron-ament-lint-auto <!nocheck>, ros-iron-ament-lint-common <!nocheck>, ros-iron-ros-workspace
+Homepage: https://github.com/gabime/spdlog
+Standards-Version: 3.9.2
+
+Package: ros-iron-spdlog-vendor
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libspdlog-dev, ros-iron-ros-workspace
+Description: Wrapper around spdlog, providing nothing but a dependency on spdlog, on some systems.
+ On others, it provides an ExternalProject build of spdlog.
